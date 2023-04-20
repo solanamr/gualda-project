@@ -34,4 +34,5 @@ You can see the website on the [deploy](https://gualda-challenge.vercel.app/), o
 The first thing you have to do is clone the repository, open powershell or git bash and copy it. Once you open it in Visual studio code or your editor of preference, you open the terminal and use the command `npm install` or `npm i` so the modules can install and everything works perfectly. Then you run the command `npm start` to load the project and voilá! you, now, have the project running in your computer.
 
 Hope you have fun checking it out.
+
 Have a great day! 👋
