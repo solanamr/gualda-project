@@ -8,11 +8,12 @@ export const EmptyState = {
   };
 
 
+  // fetch de todos los films
   export const fetchFilms = createAsyncThunk(
     "films/fetchFilms", async () => {
       try {
         const res = await axios.get("https://swapi.dev/api/films");
-        // console.log(res.data.results, 'res')
+        
         const data = await res.data.results
         
         return {data: data};
@@ -23,21 +24,18 @@ export const EmptyState = {
     }
   );
 
-
+  // fetch de personajes 
   export const fetchCharacters = createAsyncThunk(
     "characters/fetchCharacters", async (filmId) => {
       try {
         const { data } = await axios.get(`https://swapi.dev/api/films/${filmId}`);
-        // console.log(data)
         const characters = data.characters;
-        // console.log(characters, 'ch')
         const characterData = await Promise.all(
           characters.map(async (characterUrl) => {
             const response = await axios.get(characterUrl);
             return response.data;
           })
         );
-        console.log(characterData)
         return {data: characterData};
 
       } catch (error) {
@@ -63,8 +61,6 @@ export const EmptyState = {
           (g) => g.gender === action.payload
         );
       },
-
-
     },
     extraReducers(builder) {
       builder
@@ -78,10 +74,8 @@ export const EmptyState = {
           state.status = "succeeded";
   
           const data  = action.payload;
-          // const characterData = action.payload
           state.films = data.data;
           
-  
           if (data.errors === "There is not data") {
             state.films = [];
             state.filmsCopy = [];

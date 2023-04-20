@@ -3,9 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Home = lazy(() => import("./Movies/Home/Home"));
-const Details = lazy(() =>
-  import("./Characters/CharactersDetail/CharactersDetail")
-);
+const Details = lazy(() =>import("./Characters/CharactersDetail/CharactersDetail"));
 
 function App() {
   return (
@@ -23,6 +21,7 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
+
           <Route path="/" element={<Home />} />
 
           <Route path="/detail/1" element={<Details filmId={1} />} />

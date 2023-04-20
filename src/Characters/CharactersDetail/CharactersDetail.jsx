@@ -4,32 +4,44 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacters } from "../../redux/states/films/filmsSlice";
 
 import NavBar from "../../Characters/NavBar/NavBar";
+import Pagination from "../Pagination/Pagination";
 
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const CharacterDetail = ({ filmId }) => {
+
   const dispatch = useDispatch();
 
-  const charfilm = useSelector((state) => state.films.characters);
+  // estado de films
+  const charState = useSelector((state) => state.films.characters);
 
   const status = useSelector((state) => state.films.status);
 
-  const [numOfElements, setNumOfElements] = useState(10);
+  // pagination functions
+  const [pageCount, setPageCount] = useState(1);
+  const [perPage, setPerPage] = useState(10);
 
-  const slice = charfilm.slice(0, numOfElements);
-  const loadMore = () => {
-    setNumOfElements(numOfElements + numOfElements);
-  };
+  const maxPages = charState.length / perPage;
+
+  const itemSlice = charState.slice(
+    (pageCount - 1) * perPage,
+    (pageCount - 1) * perPage + perPage
+  );
+
 
   useEffect(() => {
     dispatch(fetchCharacters(filmId));
   }, [dispatch, filmId]);
 
   return (
-    <div className="bg-black h-full">
+    <div className="bg-black h-full lg:h-screen">
+
       <NavBar />
 
       <div>
+
+        {/* loader */}
+
         {status === "loading" && (
           <div className="flex justify-center items-center pt-10 pb-16">
             <PropagateLoader
@@ -40,13 +52,18 @@ const CharacterDetail = ({ filmId }) => {
             />
           </div>
         )}
+
+        {/* título */}
+
         <h2 className="text-white font-bold text-center text-3xl pt-10">
-          Characters in Episode {filmId}
+          Personajes en Episodio {filmId}
         </h2>
+
+          {/* contenedor personajes */}
 
         <div className="flex flex-wrap justify-center mt-10">
           {status === "succeeded" &&
-            slice.map((character, i) => (
+            itemSlice.map((character, i) => (
               <div className="border-2 border-softGrey w-64 h-56 p-5 ml-8 mb-5 rounded-sm shadow-2xl shadow-grey text-center">
                 <h2 key={i} className="text-white text-2xl font-bold">
                   {character.name}
@@ -68,13 +85,11 @@ const CharacterDetail = ({ filmId }) => {
         </div>
       </div>
 
-      <button
-        onClick={() => loadMore()}
-        className="bg-red hover:bg-blue transition duration-300
-       text-white px-20 py-2 mt-10 mb-5 rounded ml-[28%] lg:ml-[43%]"
-      >
-        Load more
-      </button>
+      <Pagination
+        pageCount={pageCount}
+        setPageCount={setPageCount}
+        maxPages={maxPages}
+      />
     </div>
   );
 };

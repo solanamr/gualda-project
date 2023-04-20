@@ -37,14 +37,22 @@ const NavBar = () => {
 
   return (
     <div className="flex justify-between border-b-2 border-grey pb-4">
+
+      {/* logo */}
       <Link to="/">
-        <img src={logo} alt="" className="w-32 pt-4 pl-5" />
+        <img src={logo} alt="" className="w-32 pt-4 lg:ml-5" />
+      </Link>
+
+      {/* botón para volver a home */}
+      <Link to="/">
+        <p className="text-white mt-5 bg-grey px-4 py-2 rounded font-semibold">Home</p>
       </Link>
 
       {/* gender filter */}
       <select 
       onChange={(e) => {handleGender(e)}}
       className="bg-black text-white border-2 border-blue rounded px-2 h-10 mt-5">
+        <option value="">Géneros</option>
         {filteredGender.map((g) => {
           return <option value={g}>{g}</option>;
         })}
@@ -53,7 +61,8 @@ const NavBar = () => {
       {/* eye color filter */}
       <select 
       onChange={(e) => {handleEyeColors(e)}}
-      className="bg-black text-white border-2 border-red rounded w-32 px-2 h-10 mt-5 mr-8">
+      className="bg-black text-white border-2 border-red rounded px-2 h-10 mt-5 mr-1 lg:mr-8">
+        <option value="">Color de ojos</option>
         {filteredEyeColors.map((e) => {
           return <option value={e}>{e}</option>;
         })}
