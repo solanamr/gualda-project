@@ -3,7 +3,8 @@
 Welcome to Swapi the challenge for Gualda company.
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+
+![swLogo2](https://user-images.githubusercontent.com/87136807/233478798-6175ce42-8cc5-4dd6-806a-cfd6e4215604.png)
 
 
 ## Roadmap
