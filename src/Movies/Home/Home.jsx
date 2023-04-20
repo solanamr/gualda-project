@@ -51,7 +51,7 @@ const Home = () => {
             return (
               <div
                 key={i}
-                className="relative border-2 border-softGrey w-96 h-80 p-5 ml-5 mb-5 rounded-sm">
+                className="relative border-2 border-softGrey w-96 h-80 p-5 lg:ml-5 mb-5 rounded-sm">
                 <h1 className="text-white text-center font-bold text-4xl pt-10">
                   {f.title}
                 </h1>
