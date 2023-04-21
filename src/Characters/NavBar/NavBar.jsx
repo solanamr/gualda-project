@@ -7,6 +7,7 @@ import _uniq from "underscore/modules/uniq.js";
 
 import logo from "../../assets/imgs/swLogo.svg";
 
+
 const NavBar = () => {
 
 
@@ -35,7 +36,8 @@ const NavBar = () => {
   };
 
   return (
-    <div className="flex justify-between border-b-2 border-grey pb-4">
+    <div className="relative flex justify-between border-b-2 border-grey pb-4">
+
 
       {/* logo */}
       <Link to="/">

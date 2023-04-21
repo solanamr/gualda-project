@@ -6,6 +6,8 @@ import { fetchCharacters } from "../../redux/states/films/filmsSlice";
 import NavBar from "../../Characters/NavBar/NavBar";
 import Pagination from "../Pagination/Pagination";
 
+import wp from "../../assets/imgs/swall.png"
+
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const CharacterDetail = ({ filmId }) => {
@@ -38,7 +40,8 @@ const CharacterDetail = ({ filmId }) => {
 
       <NavBar />
 
-      <div>
+      <img src={wp} alt="" className="absolute"/>
+      <div className="relative">
 
         {/* loader */}
 
@@ -83,13 +86,13 @@ const CharacterDetail = ({ filmId }) => {
               </div>
             ))}
         </div>
-      </div>
-
       <Pagination
         pageCount={pageCount}
         setPageCount={setPageCount}
         maxPages={maxPages}
       />
+      </div>
+
     </div>
   );
 };
