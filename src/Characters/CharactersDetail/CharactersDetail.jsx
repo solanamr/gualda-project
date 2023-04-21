@@ -40,7 +40,9 @@ const CharacterDetail = ({ filmId }) => {
 
       <NavBar />
 
-      <img src={wp} alt="" className="absolute"/>
+      {/* background image */}
+      <img src={wp} alt="" className="invisible lg:visible absolute"/>
+
       <div className="relative">
 
         {/* loader */}
