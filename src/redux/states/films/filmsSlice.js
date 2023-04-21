@@ -13,9 +13,7 @@ export const EmptyState = {
     "films/fetchFilms", async () => {
       try {
         const res = await axios.get("https://swapi.dev/api/films");
-        
         const data = await res.data.results
-        
         return {data: data};
 
       } catch (error) {
@@ -43,7 +41,6 @@ export const EmptyState = {
       }
     }
   );
-
 
 
   export const filmsSlice = createSlice({
@@ -78,7 +75,6 @@ export const EmptyState = {
           
           if (data.errors === "There is not data") {
             state.films = [];
-            state.filmsCopy = [];
           }
           
         })
